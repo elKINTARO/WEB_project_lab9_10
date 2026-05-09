@@ -11,8 +11,14 @@ const BookingService = {
 
   save(booking) {
     const bookings = this.getAll()
-    bookings.push(booking)
+    const entry = {
+      ...booking,
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+    }
+    bookings.push(entry)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(bookings))
+    return entry
   },
 }
 
