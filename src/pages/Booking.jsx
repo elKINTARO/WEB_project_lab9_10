@@ -10,7 +10,7 @@ import BookingService from '../services/BookingService'
 import styles from './Booking.module.css'
 
 function generateSeats(wagonNumber) {
-  return Array.from({ length: 40 }, (_, i) => ({
+  return Array.from({ length: 54 }, (_, i) => ({
     id: `w${wagonNumber}-s${i + 1}`,
     number: i + 1,
     status: Math.random() < 0.2 ? 'booked' : 'free',

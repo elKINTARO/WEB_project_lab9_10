@@ -11,12 +11,12 @@
 
 .legend {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
-.legendItem {
+.legendDot {
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -24,64 +24,98 @@
   color: var(--text-h, #0f172a);
 }
 
-.legendItem::before {
+.legendDot::before {
   content: '';
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 4px;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
 }
 
-.legendItem.free::before {
-  background: #16a34a;
+.legendDot.free::before     { background: #16a34a; }
+.legendDot.selected::before { background: #1e40af; }
+.legendDot.booked::before   { background: #dc2626; }
+
+/* Wagon: vertical layout */
+.wagon {
+  background: var(--bg, #fff);
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-x: auto;
+  width: fit-content;
+  max-width: 100%;
 }
 
-.legendItem.selected::before {
-  background: #1e40af;
-}
-
-.legendItem.booked::before {
-  background: #dc2626;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+/* Main (купейна) section: icon + grid + icon in a row */
+.mainSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 0.4rem;
 }
 
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
+.iconCol {
+  width: 1.8rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
 }
 
+.icon {
+  line-height: 1;
+}
+
+.berthsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.28rem;
+}
+
+/* Horizontal divider */
+.hDivider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0.1rem 0;
+}
+
+/* Side (бічна) section: indented to align under berths */
+.sideSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding-left: calc(1.8rem + 0.4rem);
+}
+
+/* Seats */
 .seat {
-  aspect-ratio: 1;
-  border-radius: 6px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
   border: none;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.62rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: opacity 0.15s, transform 0.15s;
   color: #fff;
+  flex-shrink: 0;
+  transition: opacity 0.15s, transform 0.15s;
 }
 
 .seat:hover:not(:disabled) {
-  opacity: 0.85;
+  opacity: 0.8;
   transform: scale(1.08);
 }
 
-.seat.free {
-  background: #16a34a;
-}
-
-.seat.selected {
-  background: #1e40af;
-}
-
-.seat.booked {
-  background: #dc2626;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
+.seat.free     { background: #16a34a; }
+.seat.selected { background: #1e40af; }
+.seat.booked   { background: #dc2626; cursor: not-allowed; opacity: 0.65; }
