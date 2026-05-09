@@ -1,5 +1,6 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
+import { toast } from 'react-toastify'
 import { useBooking } from '../context/BookingContext'
 import trains from '../data/trains'
 import WagonSelector from '../components/WagonSelector'
@@ -44,8 +45,12 @@ function Booking() {
       seats: selectedSeats,
       passenger: formData,
     })
+    toast.success(
+      `Бронювання успішне! Вагон ${selectedWagon}, місць: ${selectedSeats.length}`,
+      { icon: '🎉' }
+    )
     reset()
-    navigate('/', { state: { booked: true } })
+    setTimeout(() => navigate('/'), 2500)
   }
 
   return (
