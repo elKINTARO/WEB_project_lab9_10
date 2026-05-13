@@ -1,0 +1,40 @@
+.wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h, #0f172a);
+  margin-bottom: 0.75rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wagon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  background: var(--bg, #fff);
+  color: var(--text-h, #0f172a);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.wagon:hover {
+  border-color: #1e40af;
+  color: #1e40af;
+}
+
+.active {
+  background: #1e40af;
+  border-color: #1e40af;
+  color: #fff;
+}

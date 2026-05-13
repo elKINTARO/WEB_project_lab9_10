@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './TrainCard.module.css'
 
 function TrainCard({ train }) {
+  const navigate = useNavigate()
+
   return (
     <div className={styles.card} tabIndex={0}>
       <div className={styles.header}>
@@ -29,6 +32,14 @@ function TrainCard({ train }) {
           Місць: {train.seatsAvailable}
         </span>
       </div>
+
+      <button
+        className={styles.bookBtn}
+        onClick={() => navigate(`/booking/${train.id}`)}
+        type="button"
+      >
+        Обрати місця
+      </button>
     </div>
   )
 }
